@@ -1,3 +1,7 @@
+bot:
+  username: secret
+  token: secret
+
 spring:
   profiles:
     active:
