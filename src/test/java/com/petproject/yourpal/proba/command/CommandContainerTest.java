@@ -1,6 +1,7 @@
 package com.petproject.yourpal.proba.command;
 
 import com.petproject.yourpal.proba.service.SendBotMessageService;
+import com.petproject.yourpal.proba.service.TelegramUserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,7 +19,8 @@ class CommandContainerTest {
     @BeforeEach
     public void init() {
         var senderService = Mockito.mock(SendBotMessageService.class);
-        commandContainer = new CommandContainer(senderService);
+        var telegramService = Mockito.mock(TelegramUserService.class);
+        commandContainer = new CommandContainer(senderService, telegramService);
     }
 
     @Test

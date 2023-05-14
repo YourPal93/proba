@@ -1,7 +1,9 @@
 package com.petproject.yourpal.proba.bot;
 
 import com.petproject.yourpal.proba.command.CommandContainer;
+import com.petproject.yourpal.proba.service.TelegramUserService;
 import com.petproject.yourpal.proba.service.impl.SendBotMessageServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -21,9 +23,10 @@ public class ProbaTelegramBot extends TelegramLongPollingBot {
 
     private final static String COMMAND_PREFIX = "/";
     private final CommandContainer commandContainer;
-
-    public ProbaTelegramBot() {
-        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this));
+    @Autowired
+    public ProbaTelegramBot(TelegramUserService telegramUserService) {
+        this.commandContainer =
+                new CommandContainer(new SendBotMessageServiceImpl(this), telegramUserService);
     }
     @Override
     public String getBotUsername() {

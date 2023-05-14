@@ -2,6 +2,7 @@ package com.petproject.yourpal.proba.command;
 
 import com.petproject.yourpal.proba.bot.ProbaTelegramBot;
 import com.petproject.yourpal.proba.service.SendBotMessageService;
+import com.petproject.yourpal.proba.service.TelegramUserService;
 import com.petproject.yourpal.proba.service.impl.SendBotMessageServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -14,6 +15,7 @@ abstract class AbstractCommandTest {
 
     protected ProbaTelegramBot probaTelegramBot = Mockito.mock(ProbaTelegramBot.class);
     protected SendBotMessageService sendBotMessageService = new SendBotMessageServiceImpl(probaTelegramBot);
+    protected TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
 
     abstract String getCommandName();
     abstract String getCommandMessage();
