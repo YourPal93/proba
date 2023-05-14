@@ -1,8 +1,9 @@
 bot:
-  username: secret
-  token: secret
+  username: username
+  token: token
 
 spring:
   profiles:
     active:
       - secret
+      - local
